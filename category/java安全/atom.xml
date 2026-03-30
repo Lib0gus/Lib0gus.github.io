@@ -4,8 +4,8 @@
     <title>朝闻道 夕死可矣 • Posts by &#34;java安全&#34; category</title>
     <link href="https://lib0gus.github.io" />
     <updated>2026-03-30T12:35:03.000Z</updated>
-    <category term="Java安全" />
     <category term="Java代码审计" />
+    <category term="Java安全" />
     <category term="Hexo" />
     <category term="ShokaX" />
     <entry>
@@ -21,7 +21,7 @@
 &lt;h2 id=&#34;原理&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#原理&#34;&gt;#&lt;/a&gt; 原理&lt;/h2&gt;
 &lt;p&gt;在Apache shiro的框架中，执行身份验证时提供了一个记住密码的功能（RememberMe），如果用户登录时勾选了这个选项。用户的请求数据包中将会在cookie字段多出一段数据，这一段数据包含了用户的身份信息，且是经过加密的。加密的过程是：用户信息=&amp;gt;序列化=&amp;gt;AES加密（这一步需要用密钥key）=&amp;gt;base64编码=&amp;gt;添加到RememberMe Cookie字段。勾选记住密码之后，下次登录时，服务端会根据客户端请求包中的cookie值进行身份验证，无需登录即可访问。那么显然，服务端进行对cookie进行验证的步骤就是：取出请求包中rememberMe的cookie值 =&amp;gt; Base64解码=&amp;gt;AES解密（用到密钥key）=&amp;gt;反序列化。&lt;/p&gt;
 &lt;p&gt;&amp;lt;!-- 这是一张图片，ocr 内容为： --&amp;gt;&lt;br /&gt;
-&lt;img loading=&#34;lazy&#34; src=&#34;https://cdn.nlark.com/yuque/0/2026/png/39222866/1774838663771-f5bd34ca-ab4e-4787-a9c7-00ac831285d5.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img loading=&#34;lazy&#34; src=&#34;../image/Java%E5%AE%89%E5%85%A8%E4%B9%8BShiro/image1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;那么问题出现在哪里，即在AES_&lt;strong&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;加密时所需要的key通常来说是要保密的，&amp;lt;/font&amp;gt;&lt;/strong&gt;&lt;em&gt;&amp;lt;font style=&amp;quot;color:#000000;&amp;quot;&amp;gt;但是在&amp;lt;/font&amp;gt;&lt;/em&gt;&lt;strong&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;shiro版本&amp;lt;=1.2.24的版本中使用了固定的密钥kPH+bIxk5D2deZiIxcaaaA==&amp;lt;/font&amp;gt;&lt;/strong&gt;_。这样攻击者直接就可以用这个密钥实现上述加密过程，在Cookie字段写入想要服务端执行的恶意代码，最后服务端在对cookie进行解密的时候（反序列化后）就会执行恶意代码。在后续的版本中，这个密钥也可能会被爆破出来，从而被攻击者利用构造payload。&lt;/p&gt;
 &lt;h2 id=&#34;漏洞复现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#漏洞复现&#34;&gt;#&lt;/a&gt; 漏洞复现&lt;/h2&gt;
 &lt;p&gt;环境搭建：使用 vulhub 搭建&lt;/p&gt;
