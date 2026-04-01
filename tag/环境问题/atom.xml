@@ -13,15 +13,14 @@
         <id>https://lib0gus.github.io/2026/04/01/%E8%A7%A3%E5%86%B3hexo%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</id>
         <title>解决hexo博客图片显示问题</title>
         <link rel="alternate" href="https://lib0gus.github.io/2026/04/01/%E8%A7%A3%E5%86%B3hexo%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/"/>
-        <content type="html">&lt;p&gt;解决hexo博客图片显示问题&lt;/p&gt;
-&lt;p&gt;起因&lt;/p&gt;
+        <content type="html">&lt;h1 id=&#34;起因&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#起因&#34;&gt;#&lt;/a&gt; 起因&lt;/h1&gt;
 &lt;p&gt;在使用hexo + github 搭建的博客，发现上传到github仓库的图片与hexo博客的图片总是存在目录重复等问题，导致我的博客图片无法正常显示，非常影响体验。如下：&lt;/p&gt;
 &lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775041966270.png&#34; alt=&#34;1775041966270&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;首先我们要知道，由于防盗链的存在，cdn的图片基本无法使用&lt;/p&gt;
 &lt;p&gt;比如我以前习惯使用语雀直接导出md文件再直接传到博客上，由于防盗链的原因，虽然链接没问题，但是github还是无法正常加载出来图片&lt;/p&gt;
 &lt;p&gt;所以，我们想要使用的话，需要在本地插入图片。所以在此我推荐使用Typora来写md的文章。&lt;/p&gt;
-&lt;p&gt;配置如下：&lt;/p&gt;
-&lt;p&gt;1、修改_config.yml配置文件&lt;/p&gt;
+&lt;h1 id=&#34;配置如下&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#配置如下&#34;&gt;#&lt;/a&gt; 配置如下：&lt;/h1&gt;
+&lt;h2 id=&#34;1-修改_configyml配置文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-修改_configyml配置文件&#34;&gt;#&lt;/a&gt; 1、修改_config.yml配置文件&lt;/h2&gt;
 &lt;p&gt;首先我们找到hexo根目录下的_config.yml，找到如下设置&lt;/p&gt;
 &lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;post_asset_folder: &lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;改为&lt;/p&gt;
@@ -30,7 +29,7 @@
 &lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;  prependRoot: &lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;false&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;  postAsset: &lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;false&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;relative_link: &lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;2、生成初始文件&lt;/p&gt;
+&lt;h2 id=&#34;2-生成初始文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2-生成初始文件&#34;&gt;#&lt;/a&gt; 2、生成初始文件&lt;/h2&gt;
 &lt;p&gt;我们使用hexo生成一个测试的文章，由于刚才的配置，此时我们打开_posts会看到一个新的md文件以及用来写入图片的文件夹。&lt;/p&gt;
 &lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;hexo new &lt;/span&gt;&lt;span style=&#34;color:#B5695977;--shiki-dark:#C98A7D77&#34;&gt;&#34;&lt;/span&gt;&lt;span style=&#34;color:#B56959;--shiki-dark:#C98A7D&#34;&gt;测试文件&lt;/span&gt;&lt;span style=&#34;color:#B5695977;--shiki-dark:#C98A7D77&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775042386802.png&#34; alt=&#34;1775042386802&#34; /&gt;&lt;/p&gt;
@@ -40,7 +39,7 @@
 &lt;p&gt;如图所示&lt;/p&gt;
 &lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775042517612.png&#34; alt=&#34;1775042517612&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;此时我们再往该文章中保存文件，他就会保存到我们同名文件夹下。即hexo命令自动生成的文件夹&lt;/p&gt;
-&lt;p&gt;3、编写上传脚本&lt;/p&gt;
+&lt;h2 id=&#34;3-编写上传脚本&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3-编写上传脚本&#34;&gt;#&lt;/a&gt; 3、编写上传脚本&lt;/h2&gt;
 &lt;p&gt;正常来说，此时应该没什么问题了。但是github上传到仓库中时他的链接为&lt;/p&gt;
 &lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-http&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;https://github.com/XXXXX/XXXXX.github.io/blob/main/2026/03/31/测试文件/1774968193969.png&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;但我们博客上的图片地址会为&lt;/p&gt;
@@ -73,6 +72,9 @@
 &lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#1e754f;--shiki-dark:#4d9375&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;我们清理下缓存再重新上传下看看效果&lt;/p&gt;
 &lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;hexo &lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;clean&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt; &amp;#x26;&amp;#x26;&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt; hexo g &lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;d&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;效果展示&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#效果展示&#34;&gt;#&lt;/a&gt; 效果展示&lt;/h2&gt;
+&lt;p&gt;图片可以正常加载&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1775043645012.png&#34; alt=&#34;1775043645012&#34; /&gt;&lt;/p&gt;
 </content>
         <category term="环境问题" />
         <updated>2026-04-01T11:08:19.000Z</updated>
