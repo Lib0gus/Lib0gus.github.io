@@ -6,9 +6,9 @@
     <updated>2026-04-01T13:59:12.000Z</updated>
     <category term="Java代码审计" />
     <category term="Java安全" />
+    <category term="环境问题" />
     <category term="Hexo" />
     <category term="ShokaX" />
-    <category term="环境问题" />
     <entry>
         <id>https://lib0gus.github.io/2026/04/01/Java%E5%AE%89%E5%85%A8%E4%B9%8BLog4j2/</id>
         <title>Java安全之Log4j2</title>
