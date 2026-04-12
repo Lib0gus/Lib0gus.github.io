@@ -4,12 +4,12 @@
     <title>朝闻道 夕死可矣 • Posts by &#34;java安全&#34; tag</title>
     <link href="https://lib0gus.github.io" />
     <updated>2026-04-02T07:34:39.000Z</updated>
-    <category term="Java代码审计" />
     <category term="Java安全" />
+    <category term="Java代码审计" />
+    <category term="环境问题" />
     <category term="Hexo" />
     <category term="ShokaX" />
     <category term="webshell工具流量分析" />
-    <category term="环境问题" />
     <entry>
         <id>https://lib0gus.github.io/2026/04/02/JNDI%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</id>
         <title>JNDI的基础知识</title>

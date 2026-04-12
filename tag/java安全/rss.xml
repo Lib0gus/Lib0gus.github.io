@@ -7,12 +7,12 @@
         <language>zh-CN</language>
         <pubDate>Thu, 02 Apr 2026 15:34:39 +0800</pubDate>
         <lastBuildDate>Thu, 02 Apr 2026 15:34:39 +0800</lastBuildDate>
-        <category>Java代码审计</category>
         <category>Java安全</category>
+        <category>Java代码审计</category>
+        <category>环境问题</category>
         <category>Hexo</category>
         <category>ShokaX</category>
         <category>webshell工具流量分析</category>
-        <category>环境问题</category>
         <item>
             <guid isPermalink="true">https://lib0gus.github.io/2026/04/02/JNDI%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
             <title>JNDI的基础知识</title>
