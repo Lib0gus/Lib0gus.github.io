@@ -6,11 +6,11 @@
     <updated>2026-04-20T12:26:25.000Z</updated>
     <category term="Java代码审计" />
     <category term="Java安全" />
+    <category term="中间件漏洞" />
     <category term="Hexo" />
     <category term="ShokaX" />
-    <category term="环境问题" />
     <category term="webshell工具流量分析" />
-    <category term="中间件漏洞" />
+    <category term="环境问题" />
     <entry>
         <id>https://lib0gus.github.io/2026/04/20/Linux%E6%8F%90%E6%9D%83%E5%BA%93/</id>
         <title>Linux提权库</title>
