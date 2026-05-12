@@ -4,13 +4,13 @@
     <title>朝闻道 夕死可矣</title>
     <link href="https://lib0gus.github.io" />
     <updated>2026-05-12T08:00:00.000Z</updated>
-    <category term="Java安全" />
     <category term="Java代码审计" />
+    <category term="Java安全" />
     <category term="Hexo" />
     <category term="ShokaX" />
     <category term="中间件漏洞" />
-    <category term="环境问题" />
     <category term="webshell工具流量分析" />
+    <category term="环境问题" />
     <entry>
         <id>https://lib0gus.github.io/2026/05/12/test-vm/</id>
         <title>测试靶机 - Kioptrix Level 1</title>

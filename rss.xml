@@ -7,13 +7,13 @@
         <language>zh-CN</language>
         <pubDate>Tue, 12 May 2026 16:00:00 +0800</pubDate>
         <lastBuildDate>Tue, 12 May 2026 16:00:00 +0800</lastBuildDate>
-        <category>Java安全</category>
         <category>Java代码审计</category>
+        <category>Java安全</category>
         <category>Hexo</category>
         <category>ShokaX</category>
         <category>中间件漏洞</category>
-        <category>环境问题</category>
         <category>webshell工具流量分析</category>
+        <category>环境问题</category>
         <item>
             <guid isPermalink="true">https://lib0gus.github.io/2026/05/12/test-vm/</guid>
             <title>测试靶机 - Kioptrix Level 1</title>
