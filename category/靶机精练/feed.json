@@ -1,0 +1,16 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "朝闻道 夕死可矣 • All posts by \"靶机精练\" category",
+    "description": "记录学习日常，请犀利点评，指出我的错误",
+    "home_page_url": "https://lib0gus.github.io",
+    "items": [
+        {
+            "id": "https://lib0gus.github.io/2026/05/12/test-vm/",
+            "url": "https://lib0gus.github.io/2026/05/12/test-vm/",
+            "title": "测试靶机 - Kioptrix Level 1",
+            "date_published": "2026-05-12T08:00:00.000Z",
+            "content_html": "<h2 id=\"信息收集\"><a class=\"anchor\" href=\"#信息收集\">#</a> 信息收集</h2>\n<p>这是一篇测试文章，用于验证靶机精练页面的功能。</p>\n<h2 id=\"漏洞利用\"><a class=\"anchor\" href=\"#漏洞利用\">#</a> 漏洞利用</h2>\n<p>测试内容。</p>\n",
+            "tags": []
+        }
+    ]
+}

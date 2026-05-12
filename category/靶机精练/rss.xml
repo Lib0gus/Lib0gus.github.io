@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>朝闻道 夕死可矣 • Posts by &#34;靶机精练&#34; category</title>
+        <link>https://lib0gus.github.io</link>
+        <description>记录学习日常，请犀利点评，指出我的错误</description>
+        <language>zh-CN</language>
+        <pubDate>Tue, 12 May 2026 16:00:00 +0800</pubDate>
+        <lastBuildDate>Tue, 12 May 2026 16:00:00 +0800</lastBuildDate>
+        <category>Java安全</category>
+        <category>Java代码审计</category>
+        <category>Hexo</category>
+        <category>ShokaX</category>
+        <category>中间件漏洞</category>
+        <category>环境问题</category>
+        <category>webshell工具流量分析</category>
+        <item>
+            <guid isPermalink="true">https://lib0gus.github.io/2026/05/12/test-vm/</guid>
+            <title>测试靶机 - Kioptrix Level 1</title>
+            <link>https://lib0gus.github.io/2026/05/12/test-vm/</link>
+            <pubDate>Tue, 12 May 2026 16:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;信息收集&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#信息收集&#34;&gt;#&lt;/a&gt; 信息收集&lt;/h2&gt;
+&lt;p&gt;这是一篇测试文章，用于验证靶机精练页面的功能。&lt;/p&gt;
+&lt;h2 id=&#34;漏洞利用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#漏洞利用&#34;&gt;#&lt;/a&gt; 漏洞利用&lt;/h2&gt;
+&lt;p&gt;测试内容。&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

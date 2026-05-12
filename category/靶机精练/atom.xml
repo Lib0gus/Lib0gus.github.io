@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://lib0gus.github.io</id>
+    <title>朝闻道 夕死可矣 • Posts by &#34;靶机精练&#34; category</title>
+    <link href="https://lib0gus.github.io" />
+    <updated>2026-05-12T08:00:00.000Z</updated>
+    <category term="Java安全" />
+    <category term="Java代码审计" />
+    <category term="Hexo" />
+    <category term="ShokaX" />
+    <category term="中间件漏洞" />
+    <category term="环境问题" />
+    <category term="webshell工具流量分析" />
+    <entry>
+        <id>https://lib0gus.github.io/2026/05/12/test-vm/</id>
+        <title>测试靶机 - Kioptrix Level 1</title>
+        <link rel="alternate" href="https://lib0gus.github.io/2026/05/12/test-vm/"/>
+        <content type="html">&lt;h2 id=&#34;信息收集&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#信息收集&#34;&gt;#&lt;/a&gt; 信息收集&lt;/h2&gt;
+&lt;p&gt;这是一篇测试文章，用于验证靶机精练页面的功能。&lt;/p&gt;
+&lt;h2 id=&#34;漏洞利用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#漏洞利用&#34;&gt;#&lt;/a&gt; 漏洞利用&lt;/h2&gt;
+&lt;p&gt;测试内容。&lt;/p&gt;
+</content>
+        <updated>2026-05-12T08:00:00.000Z</updated>
+    </entry>
+</feed>

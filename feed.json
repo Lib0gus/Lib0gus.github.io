@@ -5,6 +5,14 @@
     "home_page_url": "https://lib0gus.github.io",
     "items": [
         {
+            "id": "https://lib0gus.github.io/2026/05/12/test-vm/",
+            "url": "https://lib0gus.github.io/2026/05/12/test-vm/",
+            "title": "测试靶机 - Kioptrix Level 1",
+            "date_published": "2026-05-12T08:00:00.000Z",
+            "content_html": "<h2 id=\"信息收集\"><a class=\"anchor\" href=\"#信息收集\">#</a> 信息收集</h2>\n<p>这是一篇测试文章，用于验证靶机精练页面的功能。</p>\n<h2 id=\"漏洞利用\"><a class=\"anchor\" href=\"#漏洞利用\">#</a> 漏洞利用</h2>\n<p>测试内容。</p>\n",
+            "tags": []
+        },
+        {
             "id": "https://lib0gus.github.io/2026/04/13/%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/",
             "url": "https://lib0gus.github.io/2026/04/13/%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/",
             "title": "中间件常见漏洞",
