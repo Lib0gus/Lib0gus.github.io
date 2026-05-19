@@ -4,14 +4,14 @@
     <title>朝闻道 夕死可矣</title>
     <link href="https://lib0gus.github.io" />
     <updated>2026-05-19T08:00:00.000Z</updated>
-    <category term="Java安全" />
     <category term="Java代码审计" />
+    <category term="Java安全" />
     <category term="Hexo" />
     <category term="ShokaX" />
     <category term="中间件漏洞" />
-    <category term="webshell工具流量分析" />
-    <category term="代码审计" />
     <category term="环境问题" />
+    <category term="代码审计" />
+    <category term="webshell工具流量分析" />
     <entry>
         <id>https://lib0gus.github.io/2026/05/19/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</id>
         <title>Java代码审计测试文章</title>
@@ -82,22 +82,22 @@
 &lt;p&gt;前往 &lt;a href=&#34;https://maven.apache.org/download.cgi&#34;&gt;Maven 官网&lt;/a&gt; 下载最新版本。&lt;/p&gt;
 &lt;h3 id=&#34;一-配置环境变量&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-配置环境变量&#34;&gt;#&lt;/a&gt; 一、配置环境变量&lt;/h3&gt;
 &lt;p&gt;解压后将 Maven 目录加入系统环境变量：&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1779186206531.png&#34; alt=&#34;1779186206531&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1779186206531.png&#34; alt=&#34;1779186206531&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;将 Maven 的 &lt;code&gt;bin&lt;/code&gt; 路径添加进系统变量 &lt;code&gt;Path&lt;/code&gt;：&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1779186248203.png&#34; alt=&#34;1779186248203&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1779186248203.png&#34; alt=&#34;1779186248203&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;打开命令行，输入 &lt;code&gt;mvn -version&lt;/code&gt; 验证是否成功：&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1779186308578.png&#34; alt=&#34;1779186308578&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1779186308578.png&#34; alt=&#34;1779186308578&#34; /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;二-修改配置文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-修改配置文件&#34;&gt;#&lt;/a&gt; 二、修改配置文件&lt;/h3&gt;
 &lt;p&gt;在 Maven 根目录下创建 &lt;code&gt;repository&lt;/code&gt; 文件夹作为本地仓库：&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1779186416947.png&#34; alt=&#34;1779186416947&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1779186416947.png&#34; alt=&#34;1779186416947&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;进入 &lt;code&gt;conf&lt;/code&gt; 目录，找到 &lt;code&gt;settings.xml&lt;/code&gt;，配置本地仓库路径：&lt;/p&gt;
 &lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;&amp;#x3C;&lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;localRepository&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;&gt;&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;F:\maven\maven_repository&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;&amp;#x3C;&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;localRepository&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1779186481169.png&#34; alt=&#34;1779186481169&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1779186481169.png&#34; alt=&#34;1779186481169&#34; /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;三-配置-idea&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-配置-idea&#34;&gt;#&lt;/a&gt; 三、配置 IDEA&lt;/h3&gt;
 &lt;p&gt;进入 IDEA，打开 &lt;strong&gt;文件 → 设置&lt;/strong&gt;：&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1779186558233.png&#34; alt=&#34;1779186558233&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1779186558233.png&#34; alt=&#34;1779186558233&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;找到 Maven，修改 &lt;strong&gt;Maven 主路径&lt;/strong&gt; 和 &lt;strong&gt;用户设置文件&lt;/strong&gt;：&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1779186593381.png&#34; alt=&#34;1779186593381&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1779186593381.png&#34; alt=&#34;1779186593381&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;本地仓库路径会自动同步，点击应用即可。&lt;/p&gt;
 </content>
         <category term="Java代码审计" />
