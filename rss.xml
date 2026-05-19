@@ -9,11 +9,11 @@
         <lastBuildDate>Tue, 12 May 2026 16:00:00 +0800</lastBuildDate>
         <category>Java安全</category>
         <category>Java代码审计</category>
-        <category>webshell工具流量分析</category>
+        <category>中间件漏洞</category>
         <category>Hexo</category>
         <category>ShokaX</category>
+        <category>webshell工具流量分析</category>
         <category>环境问题</category>
-        <category>中间件漏洞</category>
         <item>
             <guid isPermalink="true">https://lib0gus.github.io/2026/05/12/test-vm/</guid>
             <title>测试靶机 - Kioptrix Level 1</title>
@@ -1615,7 +1615,7 @@
             <guid isPermalink="true">https://lib0gus.github.io/2026/03/15/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8Bsql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%EF%BC%88%E4%BA%8C%EF%BC%89/</guid>
             <title>Java代码审计之sql注入漏洞（二）</title>
             <link>https://lib0gus.github.io/2026/03/15/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8Bsql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%EF%BC%88%E4%BA%8C%EF%BC%89/</link>
-            <category>Java代码审计</category>
+            <category>Java安全</category>
             <pubDate>Sun, 15 Mar 2026 17:03:58 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;上个笔记我们介绍了jdbc连接数据库的方法，以及介绍了一些基本的造成sql注入的原因。&lt;/p&gt;
 &lt;p&gt;这节我们来讲一下在jdbc基础上衍生的 MyBatis  框架的一些问题。&lt;/p&gt;
