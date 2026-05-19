@@ -45,12 +45,65 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://lib0gus.github.io/2026/05/19/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/Day1/</guid>
+            <guid isPermalink="true">https://lib0gus.github.io/2026/05/19/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
             <title>环境搭建</title>
-            <link>https://lib0gus.github.io/2026/05/19/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/Day1/</link>
+            <link>https://lib0gus.github.io/2026/05/19/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
             <category>Java代码审计</category>
             <pubDate>Tue, 19 May 2026 15:21:19 +0800</pubDate>
-            <description><![CDATA[ &lt;p&gt;Day1 测试文章&lt;/p&gt;
+            <description><![CDATA[ &lt;h2 id=&#34;配置-java-开发环境&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#配置-java-开发环境&#34;&gt;#&lt;/a&gt; 配置 Java 开发环境&lt;/h2&gt;
+&lt;h3 id=&#34;1-安装-jdk&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-安装-jdk&#34;&gt;#&lt;/a&gt; 1. 安装 JDK&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;JDK 8&lt;/strong&gt; — Java 安全研究最重要版本，大量漏洞利用链基于它&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;JDK 11&lt;/strong&gt; — LTS，很多企业在用&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;JDK 17&lt;/strong&gt; — 新 LTS，高版本安全特性&lt;/li&gt;
+&lt;li&gt;配置环境变量 &lt;code&gt;JAVA_HOME&lt;/code&gt;，学会在 IDEA 中切换 JDK 版本&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;为什么需要多个版本？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;不同版本 JDK 的安全限制不同。很多反序列化漏洞在 JDK 8 上可以直接利用，但高版本 JDK 就需要绕过。审计时也需要判断目标用的是哪个版本。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;2-安装-idea&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2-安装-idea&#34;&gt;#&lt;/a&gt; 2. 安装 IDEA&lt;/h3&gt;
+&lt;p&gt;下载安装 IntelliJ IDEA（社区版或旗舰版均可）。&lt;/p&gt;
+&lt;h3 id=&#34;3-安装-maven&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3-安装-maven&#34;&gt;#&lt;/a&gt; 3. 安装 Maven&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;配置 &lt;code&gt;settings.xml&lt;/code&gt;，设置阿里云镜像加快依赖下载&lt;/li&gt;
+&lt;li&gt;了解 &lt;code&gt;pom.xml&lt;/code&gt; 的基本结构&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-创建第一个项目&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4-创建第一个项目&#34;&gt;#&lt;/a&gt; 4. 创建第一个项目&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;用 IDEA 创建一个 Maven 项目&lt;/li&gt;
+&lt;li&gt;写一个 HelloWorld，确认能跑通&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h2 id=&#34;配置-maven&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#配置-maven&#34;&gt;#&lt;/a&gt; 配置 Maven&lt;/h2&gt;
+&lt;p&gt;Maven 是一个项目管理与构建自动化工具，主要用于 Java 项目。核心功能包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;项目构建&lt;/strong&gt;（编译、测试、打包、部署）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;依赖管理&lt;/strong&gt;（自动下载和管理第三方库）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;标准化项目结构&lt;/strong&gt;（约定优于配置）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;插件扩展&lt;/strong&gt;（支持自定义构建流程）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;下载&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#下载&#34;&gt;#&lt;/a&gt; 下载&lt;/h3&gt;
+&lt;p&gt;前往 &lt;a href=&#34;https://maven.apache.org/download.cgi&#34;&gt;Maven 官网&lt;/a&gt; 下载最新版本。&lt;/p&gt;
+&lt;h3 id=&#34;一-配置环境变量&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-配置环境变量&#34;&gt;#&lt;/a&gt; 一、配置环境变量&lt;/h3&gt;
+&lt;p&gt;解压后将 Maven 目录加入系统环境变量：&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1779186206531.png&#34; alt=&#34;1779186206531&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;将 Maven 的 &lt;code&gt;bin&lt;/code&gt; 路径添加进系统变量 &lt;code&gt;Path&lt;/code&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1779186248203.png&#34; alt=&#34;1779186248203&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;打开命令行，输入 &lt;code&gt;mvn -version&lt;/code&gt; 验证是否成功：&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1779186308578.png&#34; alt=&#34;1779186308578&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;二-修改配置文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-修改配置文件&#34;&gt;#&lt;/a&gt; 二、修改配置文件&lt;/h3&gt;
+&lt;p&gt;在 Maven 根目录下创建 &lt;code&gt;repository&lt;/code&gt; 文件夹作为本地仓库：&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1779186416947.png&#34; alt=&#34;1779186416947&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;进入 &lt;code&gt;conf&lt;/code&gt; 目录，找到 &lt;code&gt;settings.xml&lt;/code&gt;，配置本地仓库路径：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;&amp;#x3C;&lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;localRepository&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;&gt;&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;F:\maven\maven_repository&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;&amp;#x3C;&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;localRepository&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1779186481169.png&#34; alt=&#34;1779186481169&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;三-配置-idea&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-配置-idea&#34;&gt;#&lt;/a&gt; 三、配置 IDEA&lt;/h3&gt;
+&lt;p&gt;进入 IDEA，打开 &lt;strong&gt;文件 → 设置&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1779186558233.png&#34; alt=&#34;1779186558233&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;找到 Maven，修改 &lt;strong&gt;Maven 主路径&lt;/strong&gt; 和 &lt;strong&gt;用户设置文件&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1779186593381.png&#34; alt=&#34;1779186593381&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;本地仓库路径会自动同步，点击应用即可。&lt;/p&gt;
  ]]></description>
         </item>
     </channel>
