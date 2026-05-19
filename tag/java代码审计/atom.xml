@@ -55,7 +55,7 @@
 &lt;p&gt;解压后将 Maven 目录加入系统环境变量：&lt;/p&gt;
 &lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1779186206531.png&#34; alt=&#34;1779186206531&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;将 Maven 的 &lt;code&gt;bin&lt;/code&gt; 路径添加进系统变量 &lt;code&gt;Path&lt;/code&gt;：&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1779186248203.png&#34; alt=&#34;1779186248203&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1779186248203.png&#34; alt=&#34;1779186248203&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;打开命令行，输入 &lt;code&gt;mvn -version&lt;/code&gt; 验证是否成功：&lt;/p&gt;
 &lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1779186308578.png&#34; alt=&#34;1779186308578&#34; /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;二-修改配置文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-修改配置文件&#34;&gt;#&lt;/a&gt; 二、修改配置文件&lt;/h3&gt;
