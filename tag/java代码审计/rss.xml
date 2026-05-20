@@ -11,13 +11,12 @@
         <category>Java安全</category>
         <category>Hexo</category>
         <category>ShokaX</category>
-        <category>中间件漏洞</category>
-        <category>环境问题</category>
         <category>webshell工具流量分析</category>
-        <category>代码审计</category>
+        <category>环境问题</category>
+        <category>中间件漏洞</category>
         <item>
             <guid isPermalink="true">https://lib0gus.github.io/2026/05/19/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
-            <title>环境搭建</title>
+            <title>Day1 环境搭建</title>
             <link>https://lib0gus.github.io/2026/05/19/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
             <category>Java代码审计</category>
             <pubDate>Tue, 19 May 2026 15:21:19 +0800</pubDate>
