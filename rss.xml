@@ -7,13 +7,13 @@
         <language>zh-CN</language>
         <pubDate>Thu, 21 May 2026 09:06:52 +0800</pubDate>
         <lastBuildDate>Thu, 21 May 2026 09:06:52 +0800</lastBuildDate>
-        <category>Java代码审计</category>
         <category>Java安全</category>
+        <category>Java代码审计</category>
         <category>Hexo</category>
         <category>ShokaX</category>
         <category>webshell工具流量分析</category>
-        <category>环境问题</category>
         <category>中间件漏洞</category>
+        <category>环境问题</category>
         <item>
             <guid isPermalink="true">https://lib0gus.github.io/2026/05/21/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/Day2%20%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8/</guid>
             <title>Day2 类加载器</title>
@@ -27,7 +27,7 @@
 &lt;p&gt;类加载过程：&lt;strong&gt;加载 → 连接 → 初始化&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;其中，连接又分为三个阶段，整体流程为：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;加载 → 验证 → 准备 → 解析 → 初始化&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;![1779329891473](Day2 类加载器/1779329891473.png)&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1779329891473.png&#34; alt=&#34;1779329891473&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;加载是类加载的第一步，主要完成下面 3 件事情：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;通过全类名获取定义此类的二进制字节流&lt;/li&gt;
@@ -116,11 +116,11 @@
 &lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#A0ADA0;--shiki-dark:#758575DD&#34;&gt;        // 输出 null，因为 Bootstrap ClassLoader 在 Java 中不可见&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#1e754f;--shiki-dark:#4d9375&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;![1779347810888](Day2 类加载器/1779347810888.png)&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1779347810888.png&#34; alt=&#34;1779347810888&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;每个 &lt;code&gt;ClassLoader&lt;/code&gt; 可以通过 &lt;code&gt;getParent()&lt;/code&gt; 获取其父 &lt;code&gt;ClassLoader&lt;/code&gt;，如果获取到的 &lt;code&gt;ClassLoader&lt;/code&gt; 为 &lt;code&gt;null&lt;/code&gt;，那么该类的父加载器就是 &lt;code&gt;BootstrapClassLoader&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;除了这三种类加载器之外，用户还可以加入自定义的类加载器来进行扩展，以满足特殊需求。例如，我们可以对 Java 类的字节码（&lt;code&gt;.class&lt;/code&gt; 文件）进行加密，加载时再利用自定义的类加载器对其解密。&lt;/p&gt;
 &lt;p&gt;除了 &lt;code&gt;BootstrapClassLoader&lt;/code&gt; 是 JVM 自身的一部分之外，其他所有的类加载器都是在 JVM 外部实现的，并且全都继承自 &lt;code&gt;ClassLoader&lt;/code&gt; 抽象类。这样做的好处是用户可以自定义类加载器，以便让应用程序自己决定如何去获取所需的类。&lt;/p&gt;
-&lt;p&gt;![1779349442574](Day2 类加载器/1779349442574.png)&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1779349442574.png&#34; alt=&#34;1779349442574&#34; /&gt;&lt;/p&gt;
 &lt;h2 id=&#34;4-自定义类加载器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4-自定义类加载器&#34;&gt;#&lt;/a&gt; 4. 自定义类加载器&lt;/h2&gt;
 &lt;p&gt;前面也说了，除了 &lt;code&gt;BootstrapClassLoader&lt;/code&gt;，其他类加载器均由 Java 实现且全部继承自 &lt;code&gt;java.lang.ClassLoader&lt;/code&gt;。如果我们要自定义类加载器，需要继承 &lt;code&gt;ClassLoader&lt;/code&gt; 抽象类。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;ClassLoader&lt;/code&gt; 类有两个关键的方法：&lt;/p&gt;
@@ -132,7 +132,7 @@
 &lt;p&gt;&lt;strong&gt;如果我们不想打破双亲委派模型，重写 &lt;code&gt;ClassLoader&lt;/code&gt; 类中的 &lt;code&gt;findClass()&lt;/code&gt; 方法即可，无法被父类加载器加载的类最终会通过这个方法被加载。但是，如果想打破双亲委派模型则需要重写 &lt;code&gt;loadClass()&lt;/code&gt; 方法。&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;5-双亲委派模型&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#5-双亲委派模型&#34;&gt;#&lt;/a&gt; 5. 双亲委派模型&lt;/h2&gt;
 &lt;p&gt;类加载器有很多种，当我们想要加载一个类的时候，具体是哪个类加载器加载呢？这就需要提到双亲委派模型了。&lt;/p&gt;
-&lt;p&gt;![1779349442574](Day2 类加载器/1779349442574.png)&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;1779349442574.png&#34; alt=&#34;1779349442574&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;简单来说，双亲委派模型的执行流程就是：当一个类加载请求到来时，首先委派给父类加载器，只有当父类加载器无法找到所请求的类时，该类加载器才会尝试自己去加载。&lt;/p&gt;
 &lt;p&gt;双亲委派模型的核心实现在 &lt;code&gt;java.lang.ClassLoader&lt;/code&gt; 的 &lt;code&gt;loadClass()&lt;/code&gt; 方法中：&lt;/p&gt;
 &lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;protected&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt; Class&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;&amp;#x3C;&lt;/span&gt;&lt;span style=&#34;color:#1E754F;--shiki-dark:#4D9375&#34;&gt;?&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt;&gt;&lt;/span&gt;&lt;span style=&#34;color:#59873A;--shiki-dark:#80A665&#34;&gt; loadClass&lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt;String name&lt;/span&gt;&lt;span style=&#34;color:#999999;--shiki-dark:#666666&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#AB5959;--shiki-dark:#CB7676&#34;&gt; boolean&lt;/span&gt;&lt;span style=&#34;color:#393A34;--shiki-dark:#DBD7CAEE&#34;&gt; resolve&lt;/span&gt;&lt;span style=&#34;color:#2993a3;--shiki-dark:#5eaab5&#34;&gt;)&lt;/span&gt;&lt;/span&gt;
